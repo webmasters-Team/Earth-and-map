@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>dc-example</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Cesium.js"></script>
+    <script src="/libs/dc-sdk/dc.min.js"></script>
+    <link
+      href="https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    />
+    <link href="/libs/dc-sdk/dc.min.css" type="text/css" rel="stylesheet" />
+    <link href="../index.css" type="text/css" rel="stylesheet" />
+    <style>
+      .viewer-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="viewer-container" class="viewer-container"></div>
+    <script>
+      let viewer = undefined
+      function initViewer() {
+        let CesiumViewer = new Cesium.CesiumWidget('viewer-container', {
+          baseLayer: false,
+          shouldAnimate: true,
+        })
+        viewer = new DC.Viewer(CesiumViewer)
+      }
+      DC.ready().then(initViewer)
+    </script>
+  </body>
+</html>
